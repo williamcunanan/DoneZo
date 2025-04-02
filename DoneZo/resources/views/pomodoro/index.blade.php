@@ -27,7 +27,14 @@
         }
     </style>
 </head>
-<body class="flex justify-center items-center h-screen bg-yellow-100">
+<body class="flex flex-col justify-center items-center min-h-screen bg-yellow-100">
+    <div class="fixed top-4 left-4">
+        <a href="{{ route('dashboard') }}" class="text-[#E50046] hover:text-[#C4003D]">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+            </svg>
+        </a>
+    </div>
     <div class="bg-white p-8 rounded-2xl shadow-lg w-96 text-center">
         <h1 class="text-3xl font-bold text-red-500">Pomodoro Timer</h1>
         <div class="flex justify-center my-4">

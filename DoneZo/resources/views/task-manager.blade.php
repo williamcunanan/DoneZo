@@ -9,7 +9,14 @@
 </head>
 <body class="bg-[#FFF0BD] p-10">
     <div x-data="taskManager()" class="max-w-xl mx-auto">
-        <h1 class="text-3xl font-bold text-center text-[#E50046] mb-6">Task Manager</h1>
+        <div class="flex items-center mb-6">
+            <a href="{{ route('dashboard') }}" class="mr-4 text-[#E50046] hover:text-[#C4003D]">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </a>
+            <h1 class="text-3xl font-bold text-[#E50046]">Task Manager</h1>
+        </div>
         <form @submit.prevent="addTask" class="bg-white p-6 rounded-lg shadow-md">
             <label class="block text-lg font-semibold">Task Name:</label>
             <input type="text" x-model="taskName" class="w-full p-2 border rounded mb-3">

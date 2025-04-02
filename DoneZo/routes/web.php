@@ -1,20 +1,31 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PomodoroController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return ('poop');
+    return view('welcome');
 });
 
-use App\Http\Controllers\PomodoroController;
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/pomodoro', [PomodoroController::class, 'index'])->name('pomodoro.index');
-Route::post('/pomodoro/update', [PomodoroController::class, 'updateSession'])->name('pomodoro.update');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // Task routes
+    Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
+    Route::get('/tasks/create', [TaskController::class, 'create'])->name('tasks.create');
+    Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+    Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
+    Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
+    
+    // Pomodoro route
+    Route::get('/pomodoro', [PomodoroController::class, 'index'])->name('pomodoro.index');
+});
 
-use App\Http\Controllers\TaskController;
-
-Route::get('/tasks', [TaskController::class, 'index'])->name('tasks.index');
-Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
-Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
-Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
-
+require __DIR__.'/auth.php';
