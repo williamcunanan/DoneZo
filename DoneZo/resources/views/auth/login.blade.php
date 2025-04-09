@@ -1,47 +1,59 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<!DOCTYPE html>
+<html lang="en">
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DoneZo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-image: url('https://i.pinimg.com/736x/1f/7f/f5/1f7ff56b471f2bcb30cac89bdc4d67c9.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="bg-white/70 backdrop-blur-md p-8 rounded-3xl shadow-2xl w-full max-w-md text-center border-2 border-[#FDAB9E]">
+        <h2 class="text-3xl font-bold text-[#E50046] mb-6">Welcome Back to DoneZo!</h2>
 
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
+        <!-- Login Form -->
+        <form method="POST" action="{{ route('login') }}" class="space-y-4">
+            @csrf
+            <div>
+                <label for="email" class="block text-left text-gray-700 font-medium">Email</label>
+                <input id="email" type="email" name="email" required autofocus
+                    class="w-full px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-[#FDAB9E] focus:outline-none">
+            </div>
 
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+            <div>
+                <label for="password" class="block text-left text-gray-700 font-medium">Password</label>
+                <input id="password" type="password" name="password" required
+                    class="w-full px-4 py-2 rounded-full border border-gray-300 focus:ring-2 focus:ring-[#FDAB9E] focus:outline-none">
+            </div>
 
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
+            <div class="text-right">
+                @if (Route::has('password.request'))
+                    <a class="text-sm text-[#E50046] hover:underline" href="{{ route('password.request') }}">
+                        Forgot your password?
+                    </a>
+                @endif
+            </div>
 
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
+            <div>
+                <button type="submit"
+                    class="w-full bg-[#FDAB9E] hover:bg-[#FC8C7A] text-white font-bold py-2 rounded-full transition-all shadow-md">Login</button>
+            </div>
+        </form>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <p class="mt-4 text-sm text-gray-700">
+            Don't have an account?
+            <a href="{{ route('register') }}" class="text-[#E50046] font-semibold hover:underline">Register</a>
+        </p>
+    </div>
+</body>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+</html>

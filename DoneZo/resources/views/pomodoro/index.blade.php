@@ -40,7 +40,7 @@
         }
     </style>
 </head>
-<body class="flex flex-col justify-center items-center min-h-screen bg-yellow-100 p-4">
+<body class="flex flex-col justify-center items-center min-h-screen bg-yellow-100 p-4" style="background-image: url('https://i.pinimg.com/736x/9e/50/f1/9e50f11efe51d8295633c93ad26b55bf.jpg');">
     <div class="fixed top-4 left-4">
         <a href="{{ route('dashboard') }}" class="text-[#E50046] hover:text-[#C4003D]">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
