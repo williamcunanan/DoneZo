@@ -269,15 +269,16 @@
 
     <div class="min-h-screen bg-cute">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
+            <br>
             <!-- Welcome Section -->
-            <div class="card mb-10 text-center">
+            <div class="card mb-10 bg-[#C7DB9C] text-center">
                 <div class="flex items-center justify-center gap-2 mb-2">
                     <img src="{{ asset('images/logo.png') }}" alt="Tomato" class="w-6 h-6">
                     <h1 class="text-3xl text-[#2B4D12] font-['Fredoka'] font-bold">Welcome back, {{ Auth::user()->name }}!</h1>
                 </div>
                 <p class="text-gray-600 font-['Fredoka']">Here's a quick overview of your tasks and productivity tools.</p>
             </div>
-
+<br>
             <!-- Tools Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
                 <!-- To-Do List Card -->
