@@ -51,6 +51,13 @@ class TaskController extends Controller {
         }
     }
 
+    public function edit(Task $task) {
+        if ($task->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+        return response()->json($task);
+    }
+
     public function update(Request $request, Task $task) {
         if ($task->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
@@ -60,20 +67,18 @@ class TaskController extends Controller {
     }
 
     public function destroy(Task $task) {
-        if ($task->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
         $task->delete();
-        return response()->json(['message' => 'Task deleted']);
+        return response()->json(['success' => true]);
     }
 
     public function complete(Task $task) {
-        if ($task->user_id !== Auth::id()) {
-            return response()->json(['error' => 'Unauthorized'], 403);
-        }
-        $task->completed = true;
-        $task->save();
-        return response()->json($task);
+        $task->update(['completed' => true]);
+        return response()->json(['success' => true]);
+    }
+
+    public function activate(Task $task) {
+        $task->update(['completed' => false]);
+        return response()->json(['success' => true]);
     }
 
     public function updateDuration(Request $request, Task $task) {

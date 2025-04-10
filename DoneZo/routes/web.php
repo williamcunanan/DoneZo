@@ -24,7 +24,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/tasks/{task}', [TaskController::class, 'update'])->name('tasks.update');
     Route::delete('/tasks/{task}', [TaskController::class, 'destroy'])->name('tasks.destroy');
     Route::post('/tasks/{task}/complete', [TaskController::class, 'complete'])->name('tasks.complete');
+    Route::post('/tasks/{task}/activate', [TaskController::class, 'activate'])->name('tasks.activate');
     Route::post('/tasks/{task}/duration', [TaskController::class, 'updateDuration'])->name('tasks.updateDuration');
+    Route::get('/tasks/{task}/edit', [TaskController::class, 'edit'])->name('tasks.edit');
     
     // Pomodoro route
     Route::get('/pomodoro', [PomodoroController::class, 'index'])->name('pomodoro.index');
