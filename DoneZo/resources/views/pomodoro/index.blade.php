@@ -41,15 +41,8 @@
     </style>
 </head>
 <body class="flex flex-col justify-center items-center min-h-screen bg-yellow-100 p-4" style="background-image: url('https://i.pinimg.com/736x/9e/50/f1/9e50f11efe51d8295633c93ad26b55bf.jpg');">
-    <div class="fixed top-4 left-4">
-        <a href="{{ route('dashboard') }}" class="text-[#E50046] hover:text-[#C4003D]">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-            </svg>
-        </a>
-    </div>
 
-    <div x-data="pomodoroTimer()" x-init="initializeTimers()" class="relative flex flex-col items-center">
+    <div x-data="pomodoroTimer()" x-init="initializeTimers()" class="p-10 relative flex flex-col items-center">
         <div class="relative mb-4">
             <div class="tomato-leaf"></div>
             <div class="tomato-container">
@@ -58,7 +51,14 @@
         </div>
 
         <div class="bg-white p-8 rounded-2xl shadow-lg w-[480px] text-center">
-            <h1 class="text-3xl font-bold text-red-500">Pomodoro Timer</h1>
+            <div class="flex items-center mb-6">
+                <a href="{{ route('dashboard') }}" class="text-[#E50046] hover:text-[#C4003D]">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                </a>
+                <h1 class="p-4 text-3xl font-bold text-red-500">Pomodoro Timer</h1>
+            </div>
             <div class="flex justify-center gap-2 mt-4">
                 <button @click="switchMode('pomodoro')" 
                     :class="{'ring-4 ring-offset-2 ring-red-400': mode === 'pomodoro'}" 

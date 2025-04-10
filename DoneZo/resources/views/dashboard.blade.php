@@ -16,6 +16,11 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
+        .card-green {
+            background: rgba(200, 255, 175, 0.95);
+            border: 2px solid rgba(255, 180, 166, 0.2);
+            padding: 1.75rem;
+        }
         .card-yellow {
             background: rgba(255, 248, 214, 0.95);
             border: 2px solid rgba(255, 180, 166, 0.2);
@@ -47,9 +52,6 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-        .task-overview {
-            margin-top: 2.5rem;
         }
     </style>
 
@@ -271,7 +273,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-16">
             <br>
             <!-- Welcome Section -->
-            <div class="card mb-10 bg-[#C7DB9C] text-center">
+            <div class="card card-green mb-10 bg-[#C7DB9C] text-center">
                 <div class="flex items-center justify-center gap-2 mb-2">
                     <img src="{{ asset('images/logo.png') }}" alt="Tomato" class="w-6 h-6">
                     <h1 class="text-3xl text-[#2B4D12] font-['Fredoka'] font-bold">Welcome back, {{ Auth::user()->name }}!</h1>
@@ -314,14 +316,6 @@
                         </span>
                     </div>
                 </a>
-            </div>
-
-            <!-- Task Overview Title -->
-            <div class="flex items-center gap-2 mb-6 px-1">
-                <svg class="w-5 h-5 text-[#2B4D12]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                </svg>
-                <h2 class="text-xl text-[#2B4D12] font-['Fredoka'] font-bold">Task Overview</h2>
             </div>
 
             <!-- Task Lists -->
